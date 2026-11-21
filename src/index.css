@@ -14,7 +14,7 @@
   --shadow-sh: var(--sh);
 }
 
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 :root {
   --chrome: #ffffff;
