@@ -229,6 +229,7 @@ export default function RightPanel({
       <div className="p-[16px_16px_18px] border-b-0">
         <h4 className="m-0 mb-2 text-[12px] font-semibold text-mut">Shortcuts</h4>
         <div className="grid grid-cols-2 gap-x-3 gap-y-2 text-mut text-[12px]">
+          <span><kbd className="font-[600] text-[11px] bg-chrome2 border border-line border-b-2 rounded-[5px] px-1.5 py-[1px] text-ink">M</kbd> Select / Move</span>
           <span><kbd className="font-[600] text-[11px] bg-chrome2 border border-line border-b-2 rounded-[5px] px-1.5 py-[1px] text-ink">P</kbd> Pencil</span>
           <span><kbd className="font-[600] text-[11px] bg-chrome2 border border-line border-b-2 rounded-[5px] px-1.5 py-[1px] text-ink">B</kbd> Brush</span>
           <span><kbd className="font-[600] text-[11px] bg-chrome2 border border-line border-b-2 rounded-[5px] px-1.5 py-[1px] text-ink">E</kbd> Eraser</span>

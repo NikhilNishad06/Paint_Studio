@@ -86,6 +86,7 @@ export default function App() {
 
   // Text input overlay state
   const [textInput, setTextInput] = useState(null);
+  const paintRef = useRef(null);
 
   const handleOpenTextInput = useCallback((x, y, color) => {
     const fs = size * 3 + 10;
@@ -97,16 +98,27 @@ export default function App() {
     const { x, y, fs, color, value } = textInput;
     setTextInput(null);
     if (value && value.trim()) {
-      const cv = paint.canvasRef.current;
-      if (!cv) return;
-      const ctx = cv.getContext('2d', { willReadFrequently: true });
-      ctx.font = fs + 'px system-ui,"Segoe UI",sans-serif';
-      ctx.textBaseline = 'top';
-      ctx.fillStyle = grad.on
-        ? mkGrad(ctx, x + 2, y + 2, x + 2 + ctx.measureText(value).width, y + 2 + fs * 1.2, grad)
+      const tempC = document.createElement('canvas');
+      const tempCtx = tempC.getContext('2d');
+      tempCtx.font = fs + 'px system-ui,"Segoe UI",sans-serif';
+      const textMetrics = tempCtx.measureText(value);
+      const textW = Math.max(20, Math.ceil(textMetrics.width));
+      const textH = Math.max(20, Math.ceil(fs * 1.3));
+
+      tempC.width = textW + 8;
+      tempC.height = textH + 8;
+
+      tempCtx.font = fs + 'px system-ui,"Segoe UI",sans-serif';
+      tempCtx.textBaseline = 'top';
+      tempCtx.fillStyle = grad.on
+        ? mkGrad(tempCtx, 0, 0, textW, textH, grad)
         : color;
-      ctx.fillText(value, x + 2, y + 2);
-      paint.pushSnapshot();
+      tempCtx.fillText(value, 4, 4);
+
+      if (paintRef.current) {
+        paintRef.current.createActiveElement(tempC, Math.round(x), Math.round(y), tempC.width, tempC.height);
+      }
+      setDirty(true);
     }
   }, [textInput, grad]);
 
@@ -115,10 +127,12 @@ export default function App() {
       commitText();
     } else if (e.key === 'Escape') {
       setTextInput(null);
-    } else {
-      // Keep track of value
-      setTextInput((prev) => (prev ? { ...prev, value: e.target.value } : null));
     }
+  };
+
+  const handleTextInputChange = (e) => {
+    const val = e.target.value;
+    setTextInput((prev) => (prev ? { ...prev, value: val } : null));
   };
 
   // Canvas drawing hook
@@ -138,6 +152,8 @@ export default function App() {
       handleOpenTextInput(x, y, color);
     },
   });
+
+  paintRef.current = paint;
 
   // Guard before action
   const guard = useCallback((cb) => {
@@ -177,6 +193,7 @@ export default function App() {
   // Save drawing
   const saveDrawing = useCallback(async (asNew = false) => {
     commitText();
+    paint.commitSelection();
     let id = curId;
     let name = curName;
     try {
@@ -233,6 +250,7 @@ export default function App() {
 
   const dlPNG = useCallback(() => {
     commitText();
+    paint.commitSelection();
     const cv = paint.canvasRef.current;
     if (cv) {
       cv.toBlob((b) => dlBlob(b, curName));
@@ -292,6 +310,7 @@ export default function App() {
   // Tool change
   const handleSelectTool = (t) => {
     commitText();
+    paint.commitSelection();
     setTool(t);
   };
 
@@ -414,6 +433,10 @@ export default function App() {
             zoom={zoom}
             textInput={textInput}
             onTextInputKeyDown={handleTextInputKeyDown}
+            onTextInputChange={handleTextInputChange}
+            selection={paint.selection}
+            activeElement={paint.activeElement}
+            currentTool={tool}
             onPointerDown={paint.handlePointerDown}
             onPointerMove={paint.handlePointerMove}
             onPointerUp={paint.handlePointerUp}

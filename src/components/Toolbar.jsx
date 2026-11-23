@@ -3,6 +3,7 @@ import Icon from './Icon.jsx';
 import { SHAPES } from '../lib/shapes.js';
 
 export const TOOLS = [
+  ['select', 'Select & Move (M)'],
   ['pencil', 'Pencil (P)'],
   ['brush', 'Brush (B)'],
   ['eraser', 'Eraser (E)'],

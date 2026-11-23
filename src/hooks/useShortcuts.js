@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 
 const KEYS = {
+  m: 'select',
+  s: 'select',
   p: 'pencil',
   b: 'brush',
   e: 'eraser',
