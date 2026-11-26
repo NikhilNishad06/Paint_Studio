@@ -1,0 +1,17 @@
+{
+  "name": "Paint Studio",
+  "short_name": "PaintStudio",
+  "description": "Free Online Paint Studio & Vector Drawing Tool with 2D & 3D Shapes, Gradients, and History.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#151a30",
+  "theme_color": "#3a46e8",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

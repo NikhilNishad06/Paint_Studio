@@ -49,6 +49,14 @@ export const ICONS = {
   arU: '<path d="M9 21V11H4l8-8 8 8h-5v10Z"/>',
   arD: '<path d="M9 3v10H4l8 8 8-8h-5V3Z"/>',
   cyl: '<path d="M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3Z"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/>',
+  cube3d: '<path d="m21 16-9 5-9-5V8l9-5 9 5v8z"/><path d="M12 3v10"/><path d="m21 8-9 5-9-5"/><path d="M12 13 3 8"/>',
+  cyl3d: '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/>',
+  cone3d: '<path d="m12 2-8 16a8 3 0 0 0 16 0L12 2z"/>',
+  sphere3d: '<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="9" ry="3"/>',
+  pyramid3d: '<path d="m12 2-9 16 9 4 9-4-9-16z"/><path d="M12 2v20"/>',
+  prism3d: '<path d="M4 18V9l8-5v9"/><path d="M4 18l8-4 8 4-8-4V5l8 4v9l-8-4z"/>',
+  torus3d: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/>',
+  capsule3d: '<rect x="6" y="3" width="12" height="18" rx="6"/><line x1="6" y1="12" x2="18" y2="12"/>',
   moon: '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/>',
   sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'
 };

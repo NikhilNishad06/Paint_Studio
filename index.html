@@ -2,11 +2,88 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Paint Studio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Primary Meta Tags -->
+    <title>Paint Studio — Free Online Drawing App, 2D & 3D Vector Geometry Canvas</title>
+    <meta name="title" content="Paint Studio — Free Online Drawing App, 2D & 3D Vector Geometry Canvas" />
+    <meta
+      name="description"
+      content="Paint Studio is a modern, high-performance web drawing & vector canvas app. Draw 2D and 3D shapes, freehand art, multi-color gradients, flood fill, and manage offline drawings with IndexedDB."
+    />
+    <meta
+      name="keywords"
+      content="paint studio, online paint, web drawing tool, 3D shapes drawing, 2D vector geometry, free MS paint alternative, canvas drawing app, react drawing, digital art, online sketchpad"
+    />
+    <meta name="author" content="Nikhil Nishad" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="application-name" content="Paint Studio" />
+    <meta name="apple-mobile-web-app-title" content="Paint Studio" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="theme-color" content="#3a46e8" />
+    <link rel="canonical" href="https://paintstudio.app/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://paintstudio.app/" />
+    <meta property="og:title" content="Paint Studio — Free Online Drawing & 3D Geometry Suite" />
+    <meta
+      property="og:description"
+      content="Draw and design online with 2D & 3D geometric shapes, color gradients, transformation controls, and offline IndexedDB saving. Zero lag, 60 FPS."
+    />
+    <meta property="og:image" content="/favicon.png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:alt" content="Paint Studio Logo" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Paint Studio" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://paintstudio.app/" />
+    <meta name="twitter:title" content="Paint Studio — Free Online Drawing & 3D Geometry Suite" />
+    <meta
+      name="twitter:description"
+      content="Draw and design online with 2D & 3D geometric shapes, color gradients, transformation controls, and offline IndexedDB saving."
+    />
+    <meta name="twitter:image" content="/favicon.png" />
+
+    <!-- Favicon & PWA Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Structured Data (Schema.org / JSON-LD for Google Rich Results) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Paint Studio",
+        "url": "https://paintstudio.app/",
+        "description": "High-performance online canvas drawing application with 2D/3D shapes, gradient studio, and IndexedDB offline persistence.",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5 Canvas.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Nikhil Nishad",
+          "url": "https://github.com/NikhilNishad06"
+        }
+      }
+    </script>
   </head>
   <body>
+    <!-- Accessibility Semantic Heading for SEO Crawlers -->
+    <h1 style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">
+      Paint Studio — Free Online Drawing App and 2D/3D Geometry Canvas
+    </h1>
     <div id="root" class="h-full"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

@@ -13,6 +13,7 @@ export function usePaint({
   fm,
   grad,
   zoom,
+  is3d,
   setDirty,
   setC1,
   setC2,
@@ -58,6 +59,7 @@ export function usePaint({
     fm,
     grad,
     zoom,
+    is3d,
     width,
     height,
   });
@@ -71,10 +73,11 @@ export function usePaint({
       fm,
       grad,
       zoom,
+      is3d,
       width,
       height,
     };
-  }, [tool, c1, c2, size, fm, grad, zoom, width, height]);
+  }, [tool, c1, c2, size, fm, grad, zoom, is3d, width, height]);
 
   const updateUndoRedo = useCallback(() => {
     setCanUndo(hiRef.current > 0);
@@ -593,6 +596,7 @@ export function usePaint({
       fm: currentFm,
       size: currentSize,
       grad: currentGrad,
+      is3d: configRef.current.is3d,
     });
   }, [getPos, fh]);
 
@@ -645,12 +649,13 @@ export function usePaint({
       const right = Math.max(sx, x);
       const top = Math.min(sy, y);
       const bottom = Math.max(sy, y);
-      const padding = Math.max(10, (configRef.current.size || 4) * 2);
+      const dx = configRef.current.is3d ? Math.round(Math.max(16, (right - left) * 0.3)) : 0;
+      const padding = Math.max(16, (configRef.current.size || 4) * 3);
 
       const boundX = Math.max(0, Math.floor(left - padding));
-      const boundY = Math.max(0, Math.floor(top - padding));
-      const boundW = Math.min(canvasRef.current.width - boundX, Math.ceil(right - left + padding * 2));
-      const boundH = Math.min(canvasRef.current.height - boundY, Math.ceil(bottom - top + padding * 2));
+      const boundY = Math.max(0, Math.floor(top - padding - dx));
+      const boundW = Math.min(canvasRef.current.width - boundX, Math.ceil(right - left + dx + padding * 2));
+      const boundH = Math.min(canvasRef.current.height - boundY, Math.ceil(bottom - top + dx + padding * 2));
 
       if (boundW > 10 && boundH > 10) {
         const cv = canvasRef.current;

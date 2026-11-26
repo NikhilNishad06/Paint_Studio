@@ -34,6 +34,7 @@ export default function App() {
 
   // UI state
   const [tool, setTool] = useState('pencil');
+  const [is3d, setIs3d] = useState(false);
   const [c1, setC1] = useState('#000000');
   const [c2, setC2] = useState('#ffffff');
   const [size, setSize] = useState(4);
@@ -144,6 +145,7 @@ export default function App() {
     fm,
     grad,
     zoom,
+    is3d,
     setDirty,
     setC1,
     setC2,
@@ -420,11 +422,13 @@ export default function App() {
       {view === 'edit' ? (
         <main
           id="mn"
-          className="flex-1 min-h-0 grid grid-cols-[136px_1fr_288px] [grid-template-areas:'tb_ws_pn'] max-[900px]:grid-cols-[84px_1fr] max-[900px]:grid-rows-[1fr_250px] max-[900px]:[grid-template-areas:'tb_ws'_'pn_pn']"
+          className="flex-1 min-h-0 grid grid-cols-[148px_1fr_288px] [grid-template-areas:'tb_ws_pn'] max-[900px]:grid-cols-[88px_1fr] max-[900px]:grid-rows-[1fr_250px] max-[900px]:[grid-template-areas:'tb_ws'_'pn_pn']"
         >
           <Toolbar
             currentTool={tool}
             onSelectTool={handleSelectTool}
+            is3d={is3d}
+            onToggle3d={setIs3d}
           />
           <CanvasArea
             canvasRef={paint.canvasRef}
